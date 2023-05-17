@@ -70,7 +70,7 @@ az network nsg rule create \
 
 # Add an inbound rule for HTTP in the NSG
 az network nsg rule create \
-    --name "AllowHTTP" \
+    --name "HTTP" \
     --resource-group $resourceGroupName \
     --nsg-name $nsgName \
     --priority 100 --protocol Tcp \
@@ -138,6 +138,7 @@ appGWPIP=$(az network public-ip show \
     --query "ipAddress" \
     --output tsv)
 
+# Add a DNS Record Set
 az network dns record-set a add-record \
   --resource-group $resourceGroupName \
   --zone-name $dnsZoneName \
